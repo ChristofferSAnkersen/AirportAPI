@@ -29,7 +29,7 @@ namespace AirportAPI.Controllers
             return _context.Flights;
         }
 
-        [HttpGet("Specific/{flight.FromLocation}")]
+        [HttpGet("Specific/{flight.FromLocation}/{flight.ToLocation}")]
         public async Task<IActionResult> GetSpecificFlights([FromBody] Flight flight)
         {
             if (flight == null)

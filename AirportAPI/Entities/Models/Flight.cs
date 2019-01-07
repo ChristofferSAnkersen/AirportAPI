@@ -12,12 +12,15 @@ namespace AirportAPI.Entities.Models
         public int FlightId { get; set; }
 
         [Required]
+        [MaxLength(255)]
         public string AircraftType { get; set; }
 
         [Required]
+        [MaxLength(255)]
         public string FromLocation { get; set; }
 
         [Required]
+        [MaxLength(255)]
         public string ToLocation { get; set; }
 
         [Required]
