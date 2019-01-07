@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirportAPI", "AirportAPI\AirportAPI.csproj", "{C9DC19A0-1745-4383-8CBD-2CDA9C1BFAFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirportWebsite", "AirportWebsite\AirportWebsite.csproj", "{A4B824FF-3993-4F8C-A395-60523AB8BE42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C9DC19A0-1745-4383-8CBD-2CDA9C1BFAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9DC19A0-1745-4383-8CBD-2CDA9C1BFAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9DC19A0-1745-4383-8CBD-2CDA9C1BFAFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4B824FF-3993-4F8C-A395-60523AB8BE42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4B824FF-3993-4F8C-A395-60523AB8BE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4B824FF-3993-4F8C-A395-60523AB8BE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4B824FF-3993-4F8C-A395-60523AB8BE42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
