@@ -10,6 +10,7 @@ using AirportAPI.Entities.Models;
 
 namespace AirportAPI.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class FlightsController : ControllerBase
@@ -26,6 +27,26 @@ namespace AirportAPI.Controllers
         public IEnumerable<Flight> GetFlights()
         {
             return _context.Flights;
+        }
+
+        [HttpGet("Specific/{flight.FromLocation}")]
+        public async Task<IActionResult> GetSpecificFlights([FromBody] Flight flight)
+        {
+            if (flight == null)
+            {
+                return BadRequest();
+            }
+
+            var flightsFrom = await _context.Flights.Where(f => f.FromLocation == flight.FromLocation).ToListAsync();
+
+             //&& f.ToLocation == flight.ToLocation).ToListAsync()
+
+            if (flightsFrom == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(flightsFrom);
         }
 
         // GET: api/Flights/5
@@ -75,7 +96,9 @@ namespace AirportAPI.Controllers
                 }
                 else
                 {
-                    throw;
+                    var reloadFlight = await _context.Flights.FindAsync(id);
+                    _context.Entry(flight).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                 }
             }
 
@@ -97,26 +120,6 @@ namespace AirportAPI.Controllers
             return CreatedAtAction("GetFlight", new { id = flight.FlightId }, flight);
         }
 
-        // DELETE: api/Flights/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteFlight([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var flight = await _context.Flights.FindAsync(id);
-            if (flight == null)
-            {
-                return NotFound();
-            }
-
-            _context.Flights.Remove(flight);
-            await _context.SaveChangesAsync();
-
-            return Ok(flight);
-        }
 
         private bool FlightExists(int id)
         {

@@ -7,23 +7,54 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AirportAPI.Data;
 using AirportAPI.Entities.Models;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace AirportWebsite.Controllers
 {
     public class FlightsController : Controller
     {
+        private Uri ApiUrl { get; set; }
+        private readonly HttpClient _httpClient;
         private readonly AirportContext _context;
 
         public FlightsController(AirportContext context)
         {
             _context = context;
+            ApiUrl = new Uri("https://localhost:44356/api/flights/");
+            _httpClient = new HttpClient();
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var response = await _httpClient.GetAsync(ApiUrl, HttpCompletionOption.ResponseHeadersRead);
+            response.EnsureSuccessStatusCode();
+            var flights = await response.Content.ReadAsStringAsync();
+            return View(JsonConvert.DeserializeObject<List<Flight>>(flights));
         }
 
         // GET: Flights
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Flights.ToListAsync());
-        }
+        //[HttpGet]
+        //public async Task<IActionResult> Index(string searchString)
+        //{
+        //    //flight.FromLocation = searchString;
+
+        //    //var response = await _httpClient.GetAsync(ApiUrl, HttpCompletionOption.ResponseHeadersRead);
+        //    //response.EnsureSuccessStatusCode();
+        //    //var jsonFlights = await response.Content.ReadAsStringAsync();
+        //    //var flights = (JsonConvert.DeserializeObject<List<Flight>>(jsonFlights));
+
+        //    var flights = from m in _context.Flights
+        //                 select m;
+
+        //    if (!String.IsNullOrEmpty(searchString))
+        //        {
+        //            flights = flights.Where(s => s.FromLocation.Contains(searchString));
+        //        }
+
+        //    return View(await flights.ToListAsync());
+
+        //}
 
         // GET: Flights/Details/5
         public async Task<IActionResult> Details(int? id)
