@@ -10,18 +10,11 @@
 <p>
     <a asp-action="Create">Opret ny afgang</a>
 </p>
-@*<form asp-controller="Flights" asp-action="Index">
-    <p>
-        Title: <input type="text" name="searchString">
-        Title: <input type="text" name="searchString2">
-        <input type="submit" value="Søg" />
-    </p>
-</form>*@
 <form asp-controller="Flights" asp-action="Index">
     <p>
-        <label class="control-label">Afgangslufthavn</label>
+        <label class="control-label">FromLocation</label>
         <input type="text" name="fromLocation">
-        <label class="control-label">Ankomstlufthavn</label>
+        <label class="control-label">ToLocation</label>
         <input type="text" name="toLocation">
         <input type="submit" value="Søg" />
     </p>
