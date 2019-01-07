@@ -29,17 +29,15 @@ namespace AirportAPI.Controllers
             return _context.Flights;
         }
 
-        [HttpGet("Specific/{flight.FromLocation}/{flight.ToLocation}")]
-        public async Task<IActionResult> GetSpecificFlights([FromBody] Flight flight)
+        [HttpGet("{fromLocation}/{toLocation}")]
+        public async Task<IActionResult> GetSpecificFlights([FromRoute] string fromLocation, [FromRoute] string toLocation)
         {
-            if (flight == null)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
 
-            var flightsFrom = await _context.Flights.Where(f => f.FromLocation == flight.FromLocation).ToListAsync();
-
-             //&& f.ToLocation == flight.ToLocation).ToListAsync()
+            var flightsFrom = await _context.Flights.Where(f => f.FromLocation == fromLocation && f.ToLocation == toLocation).ToListAsync();
 
             if (flightsFrom == null)
             {
@@ -96,9 +94,10 @@ namespace AirportAPI.Controllers
                 }
                 else
                 {
-                    var reloadFlight = await _context.Flights.FindAsync(id);
-                    _context.Entry(flight).State = EntityState.Modified;
-                    await _context.SaveChangesAsync();
+                    throw;
+                    //var reloadFlight = await _context.Flights.FindAsync(id);
+                    //_context.Entry(flight).State = EntityState.Modified;
+                    //await _context.SaveChangesAsync();
                 }
             }
 

@@ -10,63 +10,72 @@
 <p>
     <a asp-action="Create">Opret ny afgang</a>
 </p>
-<form asp-controller="Flights" asp-action="Index">
+@*<form asp-controller="Flights" asp-action="Index">
     <p>
         Title: <input type="text" name="searchString">
         Title: <input type="text" name="searchString2">
         <input type="submit" value="Søg" />
     </p>
+</form>*@
+<form asp-controller="Flights" asp-action="Index">
+    <p>
+        <label class="control-label">Afgangslufthavn</label>
+        <input type="text" name="fromLocation">
+        <label class="control-label">Ankomstlufthavn</label>
+        <input type="text" name="toLocation">
+        <input type="submit" value="Søg" />
+    </p>
 </form>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FlightId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AircraftType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FromLocation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ToLocation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DepartureTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ArrivalTime)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FlightId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AircraftType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FromLocation)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ToLocation)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DepartureTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ArrivalTime)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.FlightId">Rediér flyafgang</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.FlightId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AircraftType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FromLocation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ToLocation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DepartureTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ArrivalTime)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FlightId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AircraftType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FromLocation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ToLocation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DepartureTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArrivalTime)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.FlightId">Rediér flyafgang</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
