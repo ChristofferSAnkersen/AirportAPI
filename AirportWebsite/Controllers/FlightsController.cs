@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 
 namespace AirportWebsite.Controllers
 {
+    
     public class FlightsController : Controller
     {
         private Uri ApiUrl { get; set; }
