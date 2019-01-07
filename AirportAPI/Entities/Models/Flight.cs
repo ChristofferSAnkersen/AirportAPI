@@ -28,5 +28,8 @@ namespace AirportAPI.Entities.Models
 
         [Required]
         public DateTime ArrivalTime { get; set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
     }
 }
