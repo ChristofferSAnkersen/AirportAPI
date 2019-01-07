@@ -9,7 +9,6 @@ namespace AirportAPI.Entities.Models
     public class Flight
     {
         [Key]
-        [Range(1000, 9999)]
         public int FlightId { get; set; }
 
         [Required]

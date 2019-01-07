@@ -14,6 +14,6 @@ namespace AirportAPI.Data
 
         }
 
-        DbSet<Flight> Flights { get; set; }
+        public DbSet<Flight> Flights { get; set; }
     }
 }

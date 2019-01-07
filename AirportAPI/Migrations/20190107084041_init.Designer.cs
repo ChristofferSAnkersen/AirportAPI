@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AirportAPI.Migrations
 {
     [DbContext(typeof(AirportContext))]
-    [Migration("20190107081218_init")]
+    [Migration("20190107084041_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
