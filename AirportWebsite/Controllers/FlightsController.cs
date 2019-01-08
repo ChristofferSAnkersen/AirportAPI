@@ -20,7 +20,7 @@ namespace AirportWebsite.Controllers
 
         public FlightsController(AirportContext context)
         {
-            ApiUrl = new Uri("https://localhost:44356/api/flights");
+            ApiUrl = new Uri("https://airportapi.azurewebsites.net/api/flights");
             _httpClient = new HttpClient();
         }
 
